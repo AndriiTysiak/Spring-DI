@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util
+            https://www.springframework.org/schema/util/spring-util.xsd">
+    <context:component-scan base-package="org.example.springXmlConfig"/>
+
+    <bean  id="clSong1" class="org.example.springXmlConfig.Song">
+    <property name="songName" value="ClassicalSongName1"/>
+    <property name="singer" value="ClassicalSinger1"/>
+    </bean>
+
+    <bean  id="clSong2" class="org.example.springXmlConfig.Song">
+        <property name="songName" value="ClassicalSongName2"/>
+        <property name="singer" value="ClassicalSinger2"/>
+    </bean>
+
+    <bean  id="rSong1" class="org.example.springXmlConfig.Song">
+        <property name="songName" value="RockSongName1"/>
+        <property name="singer" value="RockSinger1"/>
+    </bean>
+
+    <bean  id="rSong2" class="org.example.springXmlConfig.Song">
+        <property name="songName" value="RockSongName2"/>
+        <property name="singer" value="RockSinger2"/>
+    </bean>
+
+    <util:list id="classicalListSongs" value-type="org.example.springXmlConfig.Song">
+        <ref bean="clSong1"/>
+        <ref bean="clSong2"/>
+    </util:list>
+
+    <util:list id="rockListSongs" value-type="org.example.springXmlConfig.Song">
+        <ref bean="rSong1"/>
+        <ref bean="rSong2"/>
+    </util:list>
+
+    <bean id="classicalMusicService" class="org.example.springXmlConfig.service.impl.ClassicalMusicServiceImpl">
+        <constructor-arg ref="classicalListSongs"/>
+    </bean>
+
+    <bean id="rockMusicService" class="org.example.springXmlConfig.service.impl.RockMusicServiceImpl">
+        <constructor-arg ref="rockListSongs"/>
+    </bean>
+    <bean id="musicPlayer" class="org.example.springXmlConfig.MusicPlayer">
+            <constructor-arg>
+                    <!-- <ref bean="classicalMusicService"/> -->
+                     <ref bean="rockMusicService"/>
+            </constructor-arg>
+    </bean>
+</beans>
