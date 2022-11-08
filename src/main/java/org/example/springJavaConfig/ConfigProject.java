@@ -66,6 +66,6 @@ public class ConfigProject {
 
     @Bean
     public MusicPlayer musicPlayer() {
-        return new MusicPlayer(classicalMusicPlayerService()/*rockMusicService()*/);
+        return new MusicPlayer(classicalMusicPlayerService(),rockMusicService());
     }
 }

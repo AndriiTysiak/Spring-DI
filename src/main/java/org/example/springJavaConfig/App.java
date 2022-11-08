@@ -7,6 +7,7 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ConfigProject.class);
         MusicPlayer musicPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.playSong();
+        musicPlayer.playClassicSong();
+        musicPlayer.playRockSong();
     }
 }

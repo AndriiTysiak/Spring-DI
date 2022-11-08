@@ -1,20 +1,21 @@
 package org.example.springXmlConfig.service.impl;
 
 import org.example.springXmlConfig.Song;
-import org.example.springXmlConfig.service.MusicService;
+import org.example.springXmlConfig.service.ClassicalMusicService;
 
 import java.util.List;
 import java.util.Random;
 
-public class ClassicalMusicServiceImpl implements MusicService {
+public class ClassicalMusicServiceImpl implements ClassicalMusicService {
     private List<Song> classicalListSongs;
 
     public ClassicalMusicServiceImpl(List<Song> classicalListSongs) {
         this.classicalListSongs = classicalListSongs;
     }
 
+
     @Override
-    public void playSong() {
+    public void playClassicalSong() {
         Random random = new Random();
         int randomNumber =random.nextInt(2);
         System.out.println("Playing: "+classicalListSongs.get(randomNumber));

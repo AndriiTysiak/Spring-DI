@@ -49,8 +49,10 @@
     </bean>
     <bean id="musicPlayer" class="org.example.springXmlConfig.MusicPlayer">
             <constructor-arg>
-                    <!-- <ref bean="classicalMusicService"/> -->
-                     <ref bean="rockMusicService"/>
+                <ref bean="rockMusicService"/>
             </constructor-arg>
+        <constructor-arg>
+            <ref bean="classicalMusicService"/>
+        </constructor-arg>
     </bean>
 </beans>
