@@ -1,7 +1,7 @@
 package org.example.springAnnotationConfig.service.impl;
 
 import org.example.springAnnotationConfig.Song;
-import org.example.springAnnotationConfig.service.MusicService;
+import org.example.springAnnotationConfig.service.ClassicalMusicService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 @Component("classic")
-public class ClassicalMusicServiceImpl implements MusicService {
+public class ClassicalMusicServiceImpl implements ClassicalMusicService {
     private List<Song> classicalListSongs = new ArrayList<>();
 
     @PostConstruct
@@ -28,11 +28,9 @@ public class ClassicalMusicServiceImpl implements MusicService {
     }
 
     @Override
-    public void playSong() {
+    public void playClassicalSong() {
         Random random = new Random();
         int randomNumber =random.nextInt(2);
         System.out.println("Playing: "+classicalListSongs.get(randomNumber));
-
     }
-
 }

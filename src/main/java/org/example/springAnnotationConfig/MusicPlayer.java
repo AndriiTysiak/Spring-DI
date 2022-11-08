@@ -1,21 +1,26 @@
 package org.example.springAnnotationConfig;
 
-import org.example.springAnnotationConfig.service.MusicService;
+import org.example.springAnnotationConfig.service.ClassicalMusicService;
+import org.example.springAnnotationConfig.service.RockMusicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component("player")
+@Component()
 public class MusicPlayer {
-    MusicService musicService;
+    ClassicalMusicService classicalMusicService;
+    RockMusicService rockMusicService;
 
     @Autowired
-    public MusicPlayer(@Qualifier("rock"/*or classic*/) MusicService musicService) {
-        this.musicService = musicService;
+    public MusicPlayer(ClassicalMusicService classicalMusicService,RockMusicService rockMusicService) {
+        this.classicalMusicService = classicalMusicService;
+        this.rockMusicService = rockMusicService;
     }
 
-    public void playSong() {
-        musicService.playSong();
+    public void playClassicSong(){
+        classicalMusicService.playClassicalSong();
+    }
+    public void playRockSong(){
+        rockMusicService.playRockMusic();
     }
 
 }
